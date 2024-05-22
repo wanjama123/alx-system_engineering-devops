@@ -31,7 +31,7 @@ frontend www-http
     default_backend www-backend
 
 frontend www-https
-    bind   0.0.0.0:443 ssl crt /etc/letsencrypt/archive/www.randommall.tech/www.randommall.tech.pem
+    bind   0.0.0.0:443 ssl crt /etc/letsencrypt/archive/www.wanjama.tech/www.wanjama.tech.pem
     http-request add-header X-Forwarded-Proto https
     acl    letsencrypt-acl path_beg /.well-known/acme-challenge/
     use_backend letsencrypt-backend if letsencrypt-acl
@@ -39,8 +39,8 @@ frontend www-https
 backend www-backend
     balance  roundrobin
     redirect scheme https if !{ ssl_fc }
-    server 219560-web-01 54.87.294.2:80 check
-    server 219560-web-02 54.89.199.20:80 check
+    server 531462-web-01 52.3.131.63:80 check
+    server 531462-web-02 54.158.197.120:80 check
 
 backend letsencrypt-backend
     server letsencrypt 127.0.0.1:54321
